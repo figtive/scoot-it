@@ -1,0 +1,6 @@
+Django==2.1.1
+gunicorn==19.7.1
+whitenoise
+coverage
+selenium
+googlemaps

@@ -1,0 +1,35 @@
+# stages:
+  # - test
+  # - deploy
+
+# Coverage:
+#   image: python:3.6
+#   stage: test
+#   before_script:
+#     - pip install -r requirements.txt
+#     - python manage.py makemigrations
+#     - python manage.py migrate
+#     - apt-get update -qq && apt-get install -y -qq unzip
+#     - wget https://chromedriver.storage.googleapis.com/2.32/chromedriver_linux64.zip
+#     - unzip chromedriver_linux64.zip
+
+#   when: on_success
+#   script:
+#     - coverage run --include='story11/*' manage.py test story11
+#     - coverage report -m
+#   coverage: '/TOTAL.+ ([0-9]{1,3}%)/'
+#   artifacts:
+#     paths:
+#       - build
+#     expire_in: 1 day
+
+# Deployment:
+#   image: ruby:2.4
+#   stage: deploy
+#   before_script:
+#     - gem install dpl
+#   script:
+#     - dpl --provider=heroku --app=$HEROKU_APPNAME --api-key=$HEROKU_APIKEY
+#   environment:
+#     name: production
+#     url: $HEROKU_APP_HOST
