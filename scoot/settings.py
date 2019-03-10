@@ -53,7 +53,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'is_proj.urls'
+ROOT_URLCONF = 'scoot.urls'
 
 TEMPLATES = [
     {
@@ -73,7 +73,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'is_proj.wsgi.application'
+WSGI_APPLICATION = 'scoot.wsgi.application'
 
 
 # Database
