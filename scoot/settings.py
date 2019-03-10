@@ -26,7 +26,7 @@ SECRET_KEY = '@!pegl-o!w)i@0bf_5f-x$*n@y8h!zke_cwt$&#h2@%wps84)n'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['colony-is.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['scoot-map.herokuapp.com', 'localhost']
 
 
 # Application definition
