@@ -4,3 +4,5 @@ whitenoise
 coverage
 selenium
 googlemaps
+numpy
+matplotlib
