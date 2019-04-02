@@ -51,7 +51,7 @@ class GA:
                 c2 = self.population.getTop()
                 # Crossover
                 o1, o2 = self.crossover(c1, c2)
-                # Mutate
+                # Mutation
                 o1.mutate(self.mutationRate)
                 o2.mutate(self.mutationRate)
                 # Get Next
@@ -64,6 +64,61 @@ class GA:
         print("===== Complete! =====")
         print("Best Fitness\t: {:.5f}".format(max(historyFitness)))
         print("Best Distance\t: {:.5f}".format(min(historyDistance)))
+        self.showGraph(historyFitness, historyDistance, range(gen + 1), bestChromosome, self.targets, firstChromosome)
+
+    def crossover(self, c1, c2):
+        # Non-Wrapping Ordered Crossover (NWOX)
+        n = len(self.targets)
+        a = random.randint(0, n)
+        b = random.randint(a, n)
+        x1, x2 = c1.sequence, c2.sequence
+        y1 = []
+        y2 = []
+        for i in range(0, n):
+            if x1[i] not in x2[a:b]:
+                y1.append(x1[i])
+            if x2[i] not in x1[a:b]:
+                y2.append(x2[i])
+        y1 = y1[:a] + x2[a:b] + y1[a:]
+        y2 = y2[:a] + x1[a:b] + y2[a:]
+        return Chromosome(y1, self.targets), Chromosome(y2, self.targets)
+
+    def showGraph(self, historyFitness, historyDistance, historyGeneration, bestChromosome, targets,
+                  firstChromosome):
+        plt.figure(1)
+        plt.subplot(211)
+        plt.plot(historyGeneration, historyDistance, color='g')
+        plt.ylabel('Distance')
+        plt.title('GA : Performance')
+
+        plt.subplot(212)
+        plt.plot(historyGeneration, historyFitness, color='b')
+        plt.ylabel('Normalized Fitness')
+        plt.xlabel('Generation')
+        plt.show(block=False)
+
+        plt.figure(2)
+        x, y = zip(*targets)
+        plt.plot(x, y, 'ro')
+        last = bestChromosome.sequence[-1]
+        for i, s in enumerate(bestChromosome.sequence):
+            x, y = zip(targets[last], targets[s])
+            last = s
+            plt.plot(x, y, 'r')
+        plt.title('GA : Best Path @ dist=' + str(bestChromosome.distance()))
+        plt.show(block=False)
+
+        plt.figure(3)
+        x, y = zip(*targets)
+        plt.plot(x, y, 'ro')
+        last = firstChromosome.sequence[-1]
+        for i, s in enumerate(firstChromosome.sequence):
+            x, y = zip(targets[last], targets[s])
+            last = s
+            plt.plot(x, y, 'r')
+        plt.title('GA : First Path @ dist=' + str(firstChromosome.distance()))
+        plt.show()
+
 
 def main():
     np.random.seed(1)
