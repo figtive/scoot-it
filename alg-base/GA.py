@@ -6,10 +6,19 @@ import matplotlib.pyplot as plt
 class Gene:
     # Gene class, has point coords
 
-
 class Chromosome:
     # Chromosome class, has sequence of Genes
+    # sequence = [1, 5, 4, 2, 7, ...]
+    def __init__(self, sequence, targets):
+        self.genes = []
+        self.sequence = sequence[::]
+        self.targets = targets
+        self.dist = None
+        for s in sequence:
+            self.genes.append(Gene(targets[s]))
 
+    def fitness(self):
+        return self.distance() ** -1
 
 class Population:
     # Population class, has multiple Chromosomes
