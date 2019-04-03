@@ -32,6 +32,13 @@ class Chromosome:
     def copy(self):
         return Chromosome(self.sequence[::], self.targets)
 
+    def mutate(self, mutationRate):
+        # Swap mutation
+        if random.random() < mutationRate:
+            n = len(self.sequence) - 1
+            a = random.randint(0, n)
+            b = random.randint(a, n)
+            self.sequence[a], self.sequence[b] = self.sequence[b], self.sequence[a]
 
 class Population:
     # Population class, has multiple Chromosomes
