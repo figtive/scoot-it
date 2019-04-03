@@ -20,6 +20,19 @@ class Chromosome:
     def fitness(self):
         return self.distance() ** -1
 
+    def distance(self):
+        if self.dist is not None:
+            return self.dist
+        total = 0
+        for s in self.sequence:
+            dist = np.sqrt((self.genes[s-1].x - self.genes[s].x)**2 + (self.genes[s-1].y - self.genes[s].y)**2)
+            total += dist
+        self.dist = total
+        return total
+    def copy(self):
+        return Chromosome(self.sequence[::], self.targets)
+
+
 class Population:
     # Population class, has multiple Chromosomes
 
