@@ -54,7 +54,7 @@ class Population:
         self.chromosomes.append(Chromosome(sequence, self.targets))
 
     def getTop(self):
-        # do roulette selection
+        #do roulette selection
         r = random.random()
         i = 0
         plist = [c.fitness() for c in self.chromosomes]
