@@ -42,6 +42,26 @@ class Chromosome:
 
 class Population:
     # Population class, has multiple Chromosomes
+     def __init__(self, popSize, targets):
+        self.chromosomes = []
+        self.targets = targets
+        self.popSize = popSize
+
+    def addChromosome(self, sequence):
+        self.chromosomes.append(Chromosome(sequence, self.targets))
+
+    def getTop(self):
+        # do roulette selection
+        r = random.random()
+        i = 0
+        plist = [c.fitness() for c in self.chromosomes]
+        plist = [f / sum(plist) for f in plist]   # Normalize
+
+        while r > 0 and i < self.popSize:
+            r -= plist[i]
+            i += 1
+        return self.chromosomes[i - 1]
+    
 
 
 class GA:
