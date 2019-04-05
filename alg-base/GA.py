@@ -5,9 +5,10 @@ import matplotlib.pyplot as plt
 
 class Gene:
     # Gene class, has point coords
-     def __init__(self, coord):
+    def __init__(self, coord):
         self.x, self.y = coord
         self.coord = coord
+
 
 class Chromosome:
     # Chromosome class, has sequence of Genes
@@ -28,10 +29,11 @@ class Chromosome:
             return self.dist
         total = 0
         for s in self.sequence:
-            dist = np.sqrt((self.genes[s-1].x - self.genes[s].x)**2 + (self.genes[s-1].y - self.genes[s].y)**2)
+            dist = np.sqrt((self.genes[s - 1].x - self.genes[s].x) ** 2 + (self.genes[s - 1].y - self.genes[s].y) ** 2)
             total += dist
         self.dist = total
         return total
+
     def copy(self):
         return Chromosome(self.sequence[::], self.targets)
 
@@ -43,28 +45,30 @@ class Chromosome:
             b = random.randint(a, n)
             self.sequence[a], self.sequence[b] = self.sequence[b], self.sequence[a]
 
+
 class Population:
     # Population class, has multiple Chromosomes
-     def __init__(self, popSize, targets):
+    def __init__(self, popSize, targets):
         self.chromosomes = []
         self.targets = targets
         self.popSize = popSize
 
-    def addChromosome(self, sequence):
-        self.chromosomes.append(Chromosome(sequence, self.targets))
 
-    def getTop(self):
-        #do roulette selection
-        r = random.random()
-        i = 0
-        plist = [c.fitness() for c in self.chromosomes]
-        plist = [f / sum(plist) for f in plist]   # Normalize
+def addChromosome(self, sequence):
+    self.chromosomes.append(Chromosome(sequence, self.targets))
 
-        while r > 0 and i < self.popSize:
-            r -= plist[i]
-            i += 1
-        return self.chromosomes[i - 1]
-    
+
+def getTop(self):
+    # do roulette selection
+    r = random.random()
+    i = 0
+    plist = [c.fitness() for c in self.chromosomes]
+    plist = [f / sum(plist) for f in plist]  # Normalize
+
+    while r > 0 and i < self.popSize:
+        r -= plist[i]
+        i += 1
+    return self.chromosomes[i - 1]
 
 
 class GA:
