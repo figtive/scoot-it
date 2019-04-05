@@ -5,6 +5,9 @@ import matplotlib.pyplot as plt
 
 class Gene:
     # Gene class, has point coords
+     def __init__(self, coord):
+        self.x, self.y = coord
+        self.coord = coord
 
 class Chromosome:
     # Chromosome class, has sequence of Genes
