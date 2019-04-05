@@ -11,7 +11,7 @@
     <title>Waypoints in Directions</title>
 </head>
 <body>
-<nav class="navbar sticky-top navbar-light bg-light" style="background-color: #F0F0F0">
+<nav class="navbar  navbar-light bg-light" style="background-color: #F0F0F0">
     <a class="navbar-brand" href="#">
         <img src="{% static 'image/logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
         SCOOT
@@ -32,7 +32,7 @@
         <div id="container">
             <b>Waypoints:</b> <br>
             <input type="text" id="typewaypoints" placeholder="specify additional waypoints">
-            <button id="addwaypoint"></button>
+            <button id="addwaypoint"> + </button>
             <ul id="waypoint-list">
             </ul>
         </div>
@@ -46,14 +46,14 @@
         {#            <option value="calgary, ab">Calgary</option>#}
         {#            <option value="spokane, wa">Spokane</option>#}
         {#        </select>#}
-        <br>
-        <b>End:</b>
-        <select id="end">
-            <option value="Vancouver, BC">Vancouver, BC</option>
-            <option value="Seattle, WA">Seattle, WA</option>
-            <option value="San Francisco, CA">San Francisco, CA</option>
-            <option value="Los Angeles, CA">Los Angeles, CA</option>
-        </select>
+        <b>End:</b> <br>
+        <input type="text" id="end" placeholder="Specify where to start">
+        {#        <select id="end">#}
+        {#            <option value="Vancouver, BC">Vancouver, BC</option>#}
+        {#            <option value="Seattle, WA">Seattle, WA</option>#}
+        {#            <option value="San Francisco, CA">San Francisco, CA</option>#}
+        {#            <option value="Los Angeles, CA">Los Angeles, CA</option>#}
+        {#        </select>#}
         <br>
         <input type="submit" id="submit">
     </div>
