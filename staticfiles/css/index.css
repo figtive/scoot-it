@@ -55,3 +55,7 @@ input {
     border-radius: 30px;
     height: 30px;
 }
+
+body{
+    font-family: Futura, serif;
+}

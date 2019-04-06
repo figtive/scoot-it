@@ -1,11 +1,20 @@
+
 $(document).ready(function () {
+    var count = 1;
     $("#addwaypoint").click(function () {
-
         var selectedVal = $('#typewaypoints').val();
-
-        $('ul').append('<li>' + selectedVal + '</li>')
-
+        if (count <= 10) {
+            $('ul').append('<li>' + selectedVal + '</li>')
+            count++;
+            console.log(count);
+        }else {
+            console.log("Reached Maximum")ç
+        }
     });
+    $("#removewaypoint").click(function () {
+        $('ul').find('li').remove();
+        count = 0;
+    })
 });
 
 function initMap() {

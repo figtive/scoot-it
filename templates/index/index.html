@@ -1,6 +1,15 @@
 {% load staticfiles %}
 <html>
 <head>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -8,7 +17,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <script src="{% static "js/index.js" %}"></script>
-    <title>Waypoints in Directions</title>
+    <title>Scoot: Waypoints in Directions</title>
 </head>
 <body>
 <nav class="navbar  navbar-light bg-light" style="background-color: #F0F0F0">
@@ -32,7 +41,8 @@
         <div id="container">
             <b>Waypoints:</b> <br>
             <input type="text" id="typewaypoints" placeholder="specify additional waypoints">
-            <button id="addwaypoint"> + </button>
+            <button id="addwaypoint"> +</button>
+            <button id="removewaypoint"> -</button>
             <ul id="waypoint-list">
             </ul>
         </div>
@@ -55,7 +65,20 @@
         {#            <option value="Los Angeles, CA">Los Angeles, CA</option>#}
         {#        </select>#}
         <br>
-        <input type="submit" id="submit">
+        <br>
+        <b> Measure your trip over :</b>
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-secondary active">
+                <input type="radio" name="options" id="option1" autocomplete="off"> Distance
+            </label>
+            <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option2" autocomplete="off"> Time
+            </label>
+        </div>
+        <br> <br>
+{#        <input type="submit" id="submit">#}
+        <button type="submit" id="submit" class="btn btn-primary btn-lg btn-block">submit</button>
+
     </div>
     <div id="directions-panel"></div>
 </div>

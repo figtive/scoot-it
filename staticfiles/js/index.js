@@ -1,11 +1,18 @@
+
 $(document).ready(function () {
+    let count = 0;
     $("#addwaypoint").click(function () {
-
         var selectedVal = $('#typewaypoints').val();
-
-        $('ul').append('<li id="waypoints">' + selectedVal + '</li>')
-
+        if (count <= 10) {
+            $('ul').append('<li>' + selectedVal + '</li>')
+            count++;
+            console.log(count);
+        }
     });
+    $("#removewaypoint").click(function () {
+        $('ul').find('li').remove();
+        count = 0;
+    })
 });
 
 function initMap() {
@@ -24,14 +31,13 @@ function initMap() {
 
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
     var waypts = [];
-    var checkboxArray = document.getElementById('waypoints');
+    var checkboxArray = document.getElementById("waypoint-list").getElementsByTagName("li");
     for (var i = 0; i < checkboxArray.length; i++) {
-        if (checkboxArray.options[i].selected) {
-            waypts.push({
-                location: checkboxArray[i].value,
-                stopover: true
-            });
-        }
+        waypts.push({
+            location: checkboxArray[i].innerHTML,
+            stopover: true
+        });
+
     }
 
     directionsService.route({
