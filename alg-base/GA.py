@@ -5,14 +5,70 @@ import matplotlib.pyplot as plt
 
 class Gene:
     # Gene class, has point coords
+    def __init__(self, coord):
+        self.x, self.y = coord
+        self.coord = coord
 
 
 class Chromosome:
     # Chromosome class, has sequence of Genes
+    # sequence = [1, 5, 4, 2, 7, ...]
+    def __init__(self, sequence, targets):
+        self.genes = []
+        self.sequence = sequence[::]
+        self.targets = targets
+        self.dist = None
+        for s in sequence:
+            self.genes.append(Gene(targets[s]))
+
+    def fitness(self):
+        return self.distance() ** -1
+
+    def distance(self):
+        if self.dist is not None:
+            return self.dist
+        total = 0
+        for s in self.sequence:
+            dist = np.sqrt((self.genes[s - 1].x - self.genes[s].x) ** 2 + (self.genes[s - 1].y - self.genes[s].y) ** 2)
+            total += dist
+        self.dist = total
+        return total
+
+    def copy(self):
+        return Chromosome(self.sequence[::], self.targets)
+
+    def mutate(self, mutationRate):
+        # Swap mutation
+        if random.random() < mutationRate:
+            n = len(self.sequence) - 1
+            a = random.randint(0, n)
+            b = random.randint(a, n)
+            self.sequence[a], self.sequence[b] = self.sequence[b], self.sequence[a]
 
 
 class Population:
     # Population class, has multiple Chromosomes
+    def __init__(self, popSize, targets):
+        self.chromosomes = []
+        self.targets = targets
+        self.popSize = popSize
+
+
+def addChromosome(self, sequence):
+    self.chromosomes.append(Chromosome(sequence, self.targets))
+
+
+def getTop(self):
+    # do roulette selection
+    r = random.random()
+    i = 0
+    plist = [c.fitness() for c in self.chromosomes]
+    plist = [f / sum(plist) for f in plist]  # Normalize
+
+    while r > 0 and i < self.popSize:
+        r -= plist[i]
+        i += 1
+    return self.chromosomes[i - 1]
 
 
 class GA:
