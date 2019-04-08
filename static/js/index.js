@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
     var count = 1;
     $("#addwaypoint").click(function () {
@@ -7,8 +6,8 @@ $(document).ready(function () {
             $('ul').append('<li>' + selectedVal + '</li>')
             count++;
             console.log(count);
-        }else {
-            console.log("Reached Maximum")ç
+        } else {
+            console.log("Reached Maximum")
         }
     });
     $("#removewaypoint").click(function () {
