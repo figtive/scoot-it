@@ -71,24 +71,25 @@ def getTop(self):
 
 class GA:
     # GA class, runs GA through Populations
-    def __init__(self, targets, generationEnd, popSize, mutationRate):
+    def __init__(self, mapping, generationEnd, popSize, mutationRate, destinations):
         self.generationEnd = generationEnd
         self.popSize = popSize
         self.mutationRate = mutationRate
-        self.targets = targets
-        self.population = Population(self.popSize, self.targets)
+        self.mapping = mapping
+        self.destinations = destinations
+        self.population = Population(self.popSize, self.mapping)
         self.initPopulation()
 
     def initPopulation(self):
-        sequence = [s for s in range(len(self.targets))]
+        sequence = [s for s in range(len(self.mapping))]
         for _ in range(self.popSize):
             random.shuffle(sequence)
             self.population.addChromosome(sequence)
 
     def run(self):
-        print('===== Starting GA =====')
-        print('Pop. Size \t: {:d}'.format(self.popSize))
-        print('Stop Gen# \t: {:d}'.format(self.generationEnd))
+        print('\n===== Starting GA =====')
+        print('Population Size \t: {:d}'.format(self.popSize))
+        print('Stop Generation \t: {:d}'.format(self.generationEnd))
         print('Mutation Rate \t: {:f}'.format(self.mutationRate))
         historyFitness = []
         historyDistance = []
@@ -97,32 +98,30 @@ class GA:
         for gen in range(self.generationEnd):
             historyFitness.append(max([c.fitness() for c in self.population.chromosomes]))
             historyDistance.append(min([c.distance() for c in self.population.chromosomes]))
-            # print('Progress : {:0.3f}%'.format(gen/self.generationEnd*100))
-            nextPopulation = Population(self.popSize, self.targets)
+            # if gen % 20 == 0:
+            #     print('Progress : {:0.3f}%'.format(gen/self.generationEnd*100))
+            nextPopulation = Population(self.popSize, self.mapping)
             for _ in range(self.popSize):
                 # Selection
                 c1 = self.population.getTop()
                 c2 = self.population.getTop()
                 # Crossover
                 o1, o2 = self.crossover(c1, c2)
-                # Mutation
+                # Mutate
                 o1.mutate(self.mutationRate)
                 o2.mutate(self.mutationRate)
                 # Get Next
                 newChrom = o1.sequence if o1.fitness() > o2.fitness() else o2.sequence
                 nextPopulation.addChromosome(newChrom)
-                newChrom = Chromosome(newChrom, self.targets)
+                newChrom = Chromosome(newChrom, self.mapping)
                 firstChromosome = newChrom.copy() if firstChromosome is None else firstChromosome
                 bestChromosome = newChrom.copy() if bestChromosome is None or newChrom.fitness() > bestChromosome.fitness() else bestChromosome
             self.population = nextPopulation
-        print("===== Complete! =====")
-        print("Best Fitness\t: {:.5f}".format(max(historyFitness)))
-        print("Best Distance\t: {:.5f}".format(min(historyDistance)))
-        self.showGraph(historyFitness, historyDistance, range(gen + 1), bestChromosome, self.targets, firstChromosome)
+        return bestChromosome.sequence, historyDistance, bestChromosome, firstChromosome
 
     def crossover(self, c1, c2):
         # Non-Wrapping Ordered Crossover (NWOX)
-        n = len(self.targets)
+        n = len(self.mapping)
         a = random.randint(0, n)
         b = random.randint(a, n)
         x1, x2 = c1.sequence, c2.sequence
@@ -135,7 +134,7 @@ class GA:
                 y2.append(x2[i])
         y1 = y1[:a] + x2[a:b] + y1[a:]
         y2 = y2[:a] + x1[a:b] + y2[a:]
-        return Chromosome(y1, self.targets), Chromosome(y2, self.targets)
+        return Chromosome(y1, self.mapping), Chromosome(y2, self.mapping)
 
     def showGraph(self, historyFitness, historyDistance, historyGeneration, bestChromosome, targets,
                   firstChromosome):
