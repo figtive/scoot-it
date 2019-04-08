@@ -37,11 +37,20 @@ class Chromosome:
 
     def mutate(self, mutationRate):
         # Swap mutation
+        # if random.random() < mutationRate:
+        #     n = len(self.sequence) - 1
+        #     a = random.randint(0, n)
+        #     b = random.randint(a, n)
+        #     self.sequence[a], self.sequence[b] = self.sequence[b], self.sequence[a]
+        # Insertion mutation
         if random.random() < mutationRate:
             n = len(self.sequence) - 1
             a = random.randint(0, n)
             b = random.randint(a, n)
-            self.sequence[a], self.sequence[b] = self.sequence[b], self.sequence[a]
+            temp = self.sequence[b]
+            for i in range(a, b)[::-1]:
+                self.sequence[i + 1] = self.sequence[i]
+            self.sequence[a] = temp
 
 
 class Population:
