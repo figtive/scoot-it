@@ -1,6 +1,6 @@
 import numpy as np
 import random
-import matplotlib.pyplot as plt
+import client_helper as ch
 
 
 class Gene:
@@ -136,47 +136,34 @@ class GA:
         y2 = y2[:a] + x1[a:b] + y2[a:]
         return Chromosome(y1, self.mapping), Chromosome(y2, self.mapping)
 
-    def showGraph(self, historyFitness, historyDistance, historyGeneration, bestChromosome, targets,
-                  firstChromosome):
-        plt.figure(1)
-        plt.subplot(211)
-        plt.plot(historyGeneration, historyDistance, color='g')
-        plt.ylabel('Distance')
-        plt.title('GA : Performance')
-
-        plt.subplot(212)
-        plt.plot(historyGeneration, historyFitness, color='b')
-        plt.ylabel('Normalized Fitness')
-        plt.xlabel('Generation')
-        plt.show(block=False)
-
-        plt.figure(2)
-        x, y = zip(*targets)
-        plt.plot(x, y, 'ro')
-        last = bestChromosome.sequence[-1]
-        for i, s in enumerate(bestChromosome.sequence):
-            x, y = zip(targets[last], targets[s])
-            last = s
-            plt.plot(x, y, 'r')
-        plt.title('GA : Best Path @ dist=' + str(bestChromosome.distance()))
-        plt.show(block=False)
-
-        plt.figure(3)
-        x, y = zip(*targets)
-        plt.plot(x, y, 'ro')
-        last = firstChromosome.sequence[-1]
-        for i, s in enumerate(firstChromosome.sequence):
-            x, y = zip(targets[last], targets[s])
-            last = s
-            plt.plot(x, y, 'r')
-        plt.title('GA : First Path @ dist=' + str(firstChromosome.distance()))
-        plt.show()
-
 
 def main():
     np.random.seed(1)
     random.seed(1)
 
+    destinations = [
+        "Universitas Indonesia",
+        "Bavarian Haus Puri Indah",
+        "Bavarian Haus Bogor",
+    ]
+    # method = "duration"     # ['distance', 'duration', 'duration_in_traffic']
+
+    for method in ['distance', 'duration', 'duration_in_traffic']:
+        mapping = ch.get_matrix(destinations, method)
+        print(ch.check_range(mapping, 25))
+
+        print("\nDestinations:")
+        for s in destinations:
+            print("> " + s)
+        print("\nOrder by: {}".format(method))
+
+        ga = GA(mapping, 150, 20, 0.12, destinations)
+        sequence, historyDistance, bestChromosome, firstChromosome = ga.run()
+
+        ch.show_report(historyDistance, bestChromosome, firstChromosome, destinations, method)
+        print("\nBest sequence:")
+        for s in sequence:
+            print("> " + destinations[s])
 
 if __name__ == "__main__":
     main()
