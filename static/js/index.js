@@ -20,14 +20,19 @@ function initMap() {
     var directionsService = new google.maps.DirectionsService;
     var directionsDisplay = new google.maps.DirectionsRenderer;
     var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 6,
-        center: {lat: 41.85, lng: -87.65}
+        zoom: 15,
     });
     directionsDisplay.setMap(map);
 
     document.getElementById('submit').addEventListener('click', function () {
         calculateAndDisplayRoute(directionsService, directionsDisplay);
     });
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            map.setCenter(initialLocation);
+        });
+    }
 }
 
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
@@ -45,7 +50,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         origin: document.getElementById('start').value,
         destination: document.getElementById('end').value,
         waypoints: waypts,
-        optimizeWaypoints: true,
+        optimizeWaypoints: false,
         travelMode: 'DRIVING'
     }, function (response, status) {
         if (status === 'OK') {

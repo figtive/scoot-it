@@ -1,89 +1,91 @@
 {% load staticfiles %}
 <html>
+
 <head>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <script src="{% static "js/index.js" %}"></script>
     <title>Scoot: Waypoints in Directions</title>
 </head>
-<body>
-<nav class="navbar  navbar-light bg-light" style="background-color: #F0F0F0">
-    <a class="navbar-brand" href="#">
-        <img src="{% static 'image/logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
-        SCOOT
-    </a>
-</nav>
-<div id="map"></div>
-<div id="right-panel">
-    <div>
-        <b>Start:</b> <br>
-        <input type="text" id="start" placeholder="Specify where to start">
-        {#        <select id="start">#}
-        {#            <option value="Halifax, NS">Halifax, NS</option>#}
-        {#            <option value="Boston, MA">Boston, MA</option>#}
-        {#            <option value="New York, NY">New York, NY</option>#}
-        {#            <option value="Miami, FL">Miami, FL</option>#}
-        {#        </select>#}
-        <br>
-        <div id="container">
-            <b>Waypoints:</b> <br>
-            <input type="text" id="typewaypoints" placeholder="specify additional waypoints">
-            <button id="addwaypoint"> +</button>
-            <button id="removewaypoint"> -</button>
-            <ul id="waypoint-list">
-            </ul>
-        </div>
-        {#        <i>(Ctrl+Click or Cmd+Click for multiple selection)</i> <br>#}
-        {#        <select multiple id="waypoints">#}
-        {#            <option value="montreal, quebec">Montreal, QBC</option>#}
-        {#            <option value="toronto, ont">Toronto, ONT</option>#}
-        {#            <option value="chicago, il">Chicago</option>#}
-        {#            <option value="winnipeg, mb">Winnipeg</option>#}
-        {#            <option value="fargo, nd">Fargo</option>#}
-        {#            <option value="calgary, ab">Calgary</option>#}
-        {#            <option value="spokane, wa">Spokane</option>#}
-        {#        </select>#}
-        <b>End:</b> <br>
-        <input type="text" id="end" placeholder="Specify where to start">
-        {#        <select id="end">#}
-        {#            <option value="Vancouver, BC">Vancouver, BC</option>#}
-        {#            <option value="Seattle, WA">Seattle, WA</option>#}
-        {#            <option value="San Francisco, CA">San Francisco, CA</option>#}
-        {#            <option value="Los Angeles, CA">Los Angeles, CA</option>#}
-        {#        </select>#}
-        <br>
-        <br>
-        <b> Measure your trip over :</b>
-        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-secondary active">
-                <input type="radio" name="options" id="option1" autocomplete="off"> Distance
-            </label>
-            <label class="btn btn-secondary">
-                <input type="radio" name="options" id="option2" autocomplete="off"> Time
-            </label>
-        </div>
-        <br> <br>
-{#        <input type="submit" id="submit">#}
-        <button type="submit" id="submit" class="btn btn-primary btn-lg btn-block">submit</button>
 
+<body>
+    <nav class="navbar  navbar-light bg-light" style="background-color: #F0F0F0">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'image/logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
+            SCOOT
+        </a>
+    </nav>
+    <div id="map"></div>
+    <div id="right-panel">
+        <div>
+            <b>Start:</b> <br>
+            <input type="text" id="start" placeholder="Specify where to start">
+            {#        <select id="start">#}
+            {#            <option value="Halifax, NS">Halifax, NS</option>#}
+            {#            <option value="Boston, MA">Boston, MA</option>#}
+            {#            <option value="New York, NY">New York, NY</option>#}
+            {#            <option value="Miami, FL">Miami, FL</option>#}
+            {#        </select>#}
+            <br>
+            <div id="container">
+                <b>Waypoints:</b> <br>
+                <input type="text" id="typewaypoints" placeholder="specify additional waypoints">
+                <button id="addwaypoint"> +</button>
+                <button id="removewaypoint"> -</button>
+                <ul id="waypoint-list">
+                </ul>
+            </div>
+            {#        <i>(Ctrl+Click or Cmd+Click for multiple selection)</i> <br>#}
+            {#        <select multiple id="waypoints">#}
+            {#            <option value="montreal, quebec">Montreal, QBC</option>#}
+            {#            <option value="toronto, ont">Toronto, ONT</option>#}
+            {#            <option value="chicago, il">Chicago</option>#}
+            {#            <option value="winnipeg, mb">Winnipeg</option>#}
+            {#            <option value="fargo, nd">Fargo</option>#}
+            {#            <option value="calgary, ab">Calgary</option>#}
+            {#            <option value="spokane, wa">Spokane</option>#}
+            {#        </select>#}
+            <b>End:</b> <br>
+            <input type="text" id="end" placeholder="Specify where to start">
+            {#        <select id="end">#}
+            {#            <option value="Vancouver, BC">Vancouver, BC</option>#}
+            {#            <option value="Seattle, WA">Seattle, WA</option>#}
+            {#            <option value="San Francisco, CA">San Francisco, CA</option>#}
+            {#            <option value="Los Angeles, CA">Los Angeles, CA</option>#}
+            {#        </select>#}
+            <br>
+            <br>
+            <b> Measure your trip over :</b>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-secondary active">
+                    <input type="radio" name="options" id="option1" autocomplete="off"> Distance
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="options" id="option2" autocomplete="off"> Time
+                </label>
+            </div>
+            <br> <br>
+            {#        <input type="submit" id="submit">#}
+            <button type="submit" id="submit" class="btn btn-primary btn-lg btn-block">submit</button>
+
+        </div>
+        <div id="directions-panel"></div>
     </div>
-    <div id="directions-panel"></div>
-</div>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}&callback=initMap">
-</script>
+ <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}&callback=initMap">
+    </script>
 </body>
+
 </html>
