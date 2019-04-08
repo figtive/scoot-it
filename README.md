@@ -1,6 +1,8 @@
 # Scoot
 *a navigation optimizer by Colony Group*
-*Website* : http://scoot-map.herokuapp.com
+
+#Website
+*http://scoot-map.herokuapp.com*
 
 
 ---
