@@ -5,21 +5,20 @@ import matplotlib.pyplot as plt
 
 class Gene:
     # Gene class, has point coords
-    def __init__(self, coord):
-        self.x, self.y = coord
-        self.coord = coord
+    def __init__(self, id):
+        self.id = id
 
 
 class Chromosome:
     # Chromosome class, has sequence of Genes
     # sequence = [1, 5, 4, 2, 7, ...]
-    def __init__(self, sequence, targets):
+    def __init__(self, sequence, mapping):
         self.genes = []
         self.sequence = sequence[::]
-        self.targets = targets
+        self.mapping = mapping
         self.dist = None
-        for s in sequence:
-            self.genes.append(Gene(targets[s]))
+        for id in sequence:
+            self.genes.append(Gene(id))
 
     def fitness(self):
         return self.distance() ** -1
@@ -28,14 +27,13 @@ class Chromosome:
         if self.dist is not None:
             return self.dist
         total = 0
-        for s in self.sequence:
-            dist = np.sqrt((self.genes[s - 1].x - self.genes[s].x) ** 2 + (self.genes[s - 1].y - self.genes[s].y) ** 2)
-            total += dist
+        for s in range(len(self.sequence)):
+            total += self.mapping[(min(self.sequence[s-1], self.sequence[s]), max(self.sequence[s-1], self.sequence[s]))]
         self.dist = total
         return total
 
     def copy(self):
-        return Chromosome(self.sequence[::], self.targets)
+        return Chromosome(self.sequence[::], self.mapping)
 
     def mutate(self, mutationRate):
         # Swap mutation
@@ -48,14 +46,14 @@ class Chromosome:
 
 class Population:
     # Population class, has multiple Chromosomes
-    def __init__(self, popSize, targets):
+    def __init__(self, popSize, mapping):
         self.chromosomes = []
-        self.targets = targets
+        self.targets = mapping
         self.popSize = popSize
 
 
 def addChromosome(self, sequence):
-    self.chromosomes.append(Chromosome(sequence, self.targets))
+    self.chromosomes.append(Chromosome(sequence, self.mapping))
 
 
 def getTop(self):
