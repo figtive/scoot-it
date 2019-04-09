@@ -27,6 +27,7 @@ html, body {
     float: left;
     width: 70%;
     height: 100%;
+    position: absolute;
 }
 
 #right-panel {
@@ -37,14 +38,15 @@ html, body {
     float: left;
     text-align: left;
     padding-top: 0;
+    overflow: auto;
 }
 
 #directions-panel {
     margin-top: 10px;
-    background-color: #FFEE77;
+    background-color: #DCDCDC;
     padding: 10px;
     overflow: scroll;
-    height: 174px;
+    height: 19.4rem;
 }
 
 .navbar-brand {

@@ -23,10 +23,11 @@ html, body {
 }
 
 #map {
-    height: 100%;
+    height: 100vh;
     float: left;
-    width: 70%;
-    height: 100%;
+    width: 70vw;
+    position: sticky;
+    top: 0;
 }
 
 #right-panel {
@@ -58,4 +59,8 @@ input {
 
 body{
     font-family: Futura, serif;
+}
+
+#left-panel{
+    position: sticky;
 }

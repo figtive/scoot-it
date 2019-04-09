@@ -3,17 +3,17 @@
 
 <head>
     <script
-  src="https://code.jquery.com/jquery-3.3.1.js"
-  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-  crossorigin="anonymous"></script>
+            src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
     </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
@@ -22,42 +22,41 @@
 </head>
 
 <body>
-    <nav class="navbar  navbar-light bg-light" style="background-color: #F0F0F0">
-        <a class="navbar-brand" href="#">
-            <img src="{% static 'image/logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
-            SCOOT
-        </a>
-    </nav>
-    <div id="map"></div>
-    <div id="right-panel">
-        <div>
-            <div id="container">
-                <b>Waypoints:</b> <br>
-                <input type="text" id="loc-search" placeholder="specify additional waypoints">
-                <button id="addwaypoint"> +</button>
-                <button id="removewaypoint"> -</button>
-                <ul id="waypoint-list">
-                </ul>
-            </div>
-            <b> Measure your trip over :</b>
-            <div class="btn-group btn-group-toggle" id="method-choice" data-toggle="buttons">
-                <label class="btn btn-secondary active">
-                    <input type="radio" name="options" id="option1" autocomplete="off" value="distance"> Distance
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="options" id="option2" autocomplete="off" value="duration"> Time
-                </label>
-            </div>
-            <br> <br>
-            <button type="submit" id="submit" class="btn btn-primary btn-lg btn-block">submit</button>
+<nav class="navbar  navbar-light bg-light" style="background-color: #F0F0F0">
+    <a class="navbar-brand" href="#">
+        <img src="{% static 'image/logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
+        SCOOT
+    </a>
+</nav>
+<div id="map"></div>
 
-        </div>
-        <div id="directions-panel"></div>
+
+<div id="right-panel" style="overflow-y: scroll;height: 100%">
+    <div id="container">
+        <b>Waypoints:</b> <br>
+        <input type="text" id="loc-search" placeholder="specify additional waypoints">
+        <button id="addwaypoint"> +</button>
+        <button id="removewaypoint"> -</button>
+        <ul id="waypoint-list">
+        </ul>
     </div>
+    <b> Measure your trip over :</b>
+    <div class="btn-group btn-group-toggle" id="method-choice" data-toggle="buttons">
+        <label class="btn btn-secondary active">
+            <input type="radio" name="options" id="option1" autocomplete="off" value="distance"> Distance
+        </label>
+        <label class="btn btn-secondary">
+            <input type="radio" name="options" id="option2" autocomplete="off" value="duration"> Time
+        </label>
+    </div>
+    <br> <br>
+    <button type="submit" id="submit" class="btn btn-primary btn-lg btn-block">submit</button>
+    <div id="directions-panel"></div>
+</div>
+
 <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}&callback=initMap">-->
 <!--    </script>-->
 <script src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}&libraries=places&callback=initMap"
-         async defer></script>
+        async defer></script>
 </body>
-
 </html>
