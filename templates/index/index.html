@@ -16,42 +16,49 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <script src="{% static 'js/index.js' %}"></script>
-    <title>Scoot: Waypoints in Direction</title>
+    <title>scoot</title>
 </head>
 
 <body>
-<nav class="navbar  navbar-light bg-light" style="background-color: #F0F0F0">
-    <a class="navbar-brand" href="#">
-        <img src="{% static 'image/logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
-        SCOOT
-    </a>
-</nav>
-<div id="map"></div>
+<div class="screen">
+
+    <nav class="navbar" id="navbar">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'image/logo.png' %}" width="30" height="30" class="d-inline-block" alt="">
+            scoot
+        </a>
+    </nav>
+
+    <div class="wrapper">
+        <div id="map"></div>
 
 
-<div id="right-panel" style="overflow-y: scroll;height: 100%;margin-right: 0px">
-    <div id="container">
-        <b>Waypoints:</b> <br>
-        <input type="text" id="loc-search" placeholder="specify additional waypoints">
-        <button id="addwaypoint"> +</button>
-        <button id="removewaypoint"> -</button>
-        <ul id="waypoint-list">
-        </ul>
+        <div id="right-panel">
+            <div id="container">
+                <span class="parameter-label">Waypoints</span>
+                <input type="text" id="loc-search" class="form-control" placeholder="Where to go...">
+                <button id="addwaypoint">+</button>
+                <button id="removewaypoint">-</button>
+                <ul id="waypoint-list">
+                </ul>
+            </div>
+            <span class="parameter-label">Method</span>
+            <div class="btn-group btn-group-toggle" id="method-choice" data-toggle="buttons">
+                <label class="btn btn-secondary active">
+                    <input type="radio" name="options" id="option1" autocomplete="off" value="distance">Distance
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="options" id="option2" autocomplete="off" value="duration">Time
+                </label>
+            </div>
+            <br> <br>
+            <button type="submit" id="submit" class="btn btn-outline-secondary btn-lg btn-block">scoot it!</button>
+            <div id="directions-panel"></div>
+        </div>
     </div>
-    <b> Measure your trip over :</b>
-    <div class="btn-group btn-group-toggle" id="method-choice" data-toggle="buttons">
-        <label class="btn btn-secondary active">
-            <input type="radio" name="options" id="option1" autocomplete="off" value="distance"> Distance
-        </label>
-        <label class="btn btn-secondary">
-            <input type="radio" name="options" id="option2" autocomplete="off" value="duration"> Time
-        </label>
-    </div>
-    <br> <br>
-    <button type="submit" id="submit" class="btn btn-outline-secondary btn-lg btn-block">submit</button>
-    <div id="directions-panel"></div>
 </div>
 
 <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}&callback=initMap">-->

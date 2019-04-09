@@ -1,7 +1,12 @@
 #right-panel {
     font-family: 'Roboto', 'sans-serif';
     line-height: 30px;
-    padding-left: 10px;
+    overflow-y: scroll;
+    height: 100%;
+    border-width: 2px;
+    float: left;
+    text-align: left;
+    padding-top: 0;
 }
 
 #right-panel select, #right-panel input {
@@ -28,17 +33,6 @@ html, body {
     width: 70%;
     height: 100%;
     position: absolute;
-}
-
-#right-panel {
-    margin: 20px;
-    border-width: 2px;
-    width: 20%;
-    height: 400px;
-    float: left;
-    text-align: left;
-    padding-top: 0;
-    overflow: auto;
 }
 
 #directions-panel {

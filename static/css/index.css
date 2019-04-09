@@ -1,7 +1,43 @@
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.screen {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    min-height: 0;
+}
 #right-panel {
     font-family: 'Roboto', 'sans-serif';
     line-height: 30px;
-    padding-left: 10px;
+    overflow: auto;
+    flex-grow: 0;
+    padding: 8px;
+    background: #dee1ec;
+    box-shadow: -8px 0 10px -6px black;
 }
 
 #right-panel select, #right-panel input {
@@ -23,22 +59,9 @@ html, body {
 }
 
 #map {
-    height: 100vh;
-    float: left;
-    width: 70vw;
-    position: sticky;
-    top: 0;
+    flex-grow: 3;
 }
 
-#right-panel {
-    margin: 20px;
-    border-width: 2px;
-    width: 20%;
-    height: 400px;
-    float: left;
-    text-align: left;
-    padding-top: 0;
-}
 
 #directions-panel {
     margin-top: 10px;
@@ -48,19 +71,59 @@ html, body {
     height: 19.4rem;
 }
 
+#navbar {
+    background: #10316b;
+    padding: 8px 50px;
+}
+
 .navbar-brand {
-    color: #86A8AF;
+    color: #eac100;
+    font-weight: 800;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 2em;
+    line-height: 1;
 }
 
-input {
-    border-radius: 30px;
-    height: 30px;
+.navbar-brand:hover {
+    color: #eaac25;
 }
 
-body{
-    font-family: Futura, serif;
+.parameter-label {
+    width: 100%;
+    display: block;
 }
 
-#left-panel{
-    position: sticky;
+#method-choice {
+    width: 100%;
+}
+
+#method-choice > * {
+    width: 50%;
+}
+
+#submit {
+    font-weight: 800;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.2em;
+    line-height: 1.5;
+    border-color: #0b8457;
+    color: #0b8457;
+}
+#submit:hover {
+    background: #0b8457;
+    color: #eac100;
+}
+
+@media (max-width: 768px) {
+
+    .wrapper {
+        flex-direction: column;
+    }
+    #map {
+        height: 100vh;
+    }
+    #navbar {
+        padding: 8px 8pxs;
+    }
+
 }
