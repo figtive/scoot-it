@@ -1,10 +1,8 @@
-import numpy as np
 import random
-import client_helper as ch
 
 
 class Gene:
-    # Gene class, has point coords
+    # Gene class
     def __init__(self, id):
         self.id = id
 
@@ -49,37 +47,34 @@ class Chromosome:
             b = random.randint(a, n)
             temp = self.sequence[b]
             for i in range(a, b)[::-1]:
-                self.sequence[i + 1] = self.sequence[i]
+                self.sequence[i+1] = self.sequence[i]
             self.sequence[a] = temp
 
 
 class Population:
-    # Population class, has multiple Chromosomes
     def __init__(self, popSize, mapping):
         self.chromosomes = []
-        self.targets = mapping
+        self.mapping = mapping
         self.popSize = popSize
 
+    def addChromosome(self, sequence):
+        self.chromosomes.append(Chromosome(sequence, self.mapping))
 
-def addChromosome(self, sequence):
-    self.chromosomes.append(Chromosome(sequence, self.mapping))
+    def getTop(self):
+        # do roulette selection
+        r = random.random()
+        i = 0
+        plist = [c.fitness() for c in self.chromosomes]
+        plist = [f / sum(plist) for f in plist]   # Normalize
 
-
-def getTop(self):
-    # do roulette selection
-    r = random.random()
-    i = 0
-    plist = [c.fitness() for c in self.chromosomes]
-    plist = [f / sum(plist) for f in plist]  # Normalize
-
-    while r > 0 and i < self.popSize:
-        r -= plist[i]
-        i += 1
-    return self.chromosomes[i - 1]
+        while r > 0 and i < self.popSize:
+            r -= plist[i]
+            i += 1
+        return self.chromosomes[i - 1]
 
 
 class GA:
-    # GA class, runs GA through Populations
+    # GA class, has multiple Chromosomes
     def __init__(self, mapping, generationEnd, popSize, mutationRate, destinations):
         self.generationEnd = generationEnd
         self.popSize = popSize
@@ -90,7 +85,7 @@ class GA:
         self.initPopulation()
 
     def initPopulation(self):
-        sequence = [s for s in range(len(self.mapping))]
+        sequence = [s for s in range(len(self.destinations))]
         for _ in range(self.popSize):
             random.shuffle(sequence)
             self.population.addChromosome(sequence)
@@ -130,7 +125,7 @@ class GA:
 
     def crossover(self, c1, c2):
         # Non-Wrapping Ordered Crossover (NWOX)
-        n = len(self.mapping)
+        n = len(self.destinations)
         a = random.randint(0, n)
         b = random.randint(a, n)
         x1, x2 = c1.sequence, c2.sequence
@@ -144,35 +139,3 @@ class GA:
         y1 = y1[:a] + x2[a:b] + y1[a:]
         y2 = y2[:a] + x1[a:b] + y2[a:]
         return Chromosome(y1, self.mapping), Chromosome(y2, self.mapping)
-
-
-def main():
-    np.random.seed(1)
-    random.seed(1)
-
-    destinations = [
-        "Universitas Indonesia",
-        "Bavarian Haus Puri Indah",
-        "Bavarian Haus Bogor",
-    ]
-    # method = "duration"     # ['distance', 'duration', 'duration_in_traffic']
-
-    for method in ['distance', 'duration', 'duration_in_traffic']:
-        mapping = ch.get_matrix(destinations, method)
-        print(ch.check_range(mapping, 25))
-
-        print("\nDestinations:")
-        for s in destinations:
-            print("> " + s)
-        print("\nOrder by: {}".format(method))
-
-        ga = GA(mapping, 150, 20, 0.12, destinations)
-        sequence, historyDistance, bestChromosome, firstChromosome = ga.run()
-
-        ch.show_report(historyDistance, bestChromosome, firstChromosome, destinations, method)
-        print("\nBest sequence:")
-        for s in sequence:
-            print("> " + destinations[s])
-
-if __name__ == "__main__":
-    main()

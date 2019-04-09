@@ -21,6 +21,7 @@ function initMap() {
     var directionsDisplay = new google.maps.DirectionsRenderer;
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 15,
+        center : {longitude : -6.21462, latitude: 106.84513}
     });
     directionsDisplay.setMap(map);
 
