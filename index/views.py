@@ -16,7 +16,9 @@ def index(request):
 @csrf_exempt
 def process(request):
     if request.method == 'POST':
+        print(request.body.decode('utf-8'))
         body = json.loads(request.body.decode('utf-8'))
+        print(body)
         destinations = body['destinations']
         method = body['method']     # ['distance', 'duration', 'duration_in_traffic']
         radius = 50
@@ -32,7 +34,7 @@ def process(request):
         ga = ga_lib.GA(mapping, 150, 20, 0.2, destinations)
         sequence, historyDistance, bestChromosome, firstChromosome = ga.run()
 
-        ch.show_report(historyDistance, bestChromosome, firstChromosome, destinations, method)
+        # ch.show_report(historyDistance, bestChromosome, firstChromosome, destinations, method)
         print("\nBest sequence:")
         for s in sequence:
             print("> " + destinations[s])

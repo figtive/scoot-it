@@ -5,17 +5,17 @@ import math
 
 
 def get_matrix(destinations, method='distance'):
-    # gmaps = gm.Client("AIzaSyBwMwayIZrYwfwotUim0QOvKVu4YZPEnw8")
-    # cleaned = {}
-    # for i, d in enumerate(destinations[:-1]):
-    #     cleaned = {**clean(i, gmaps.distance_matrix(
-    #         origins=[d],
-    #         destinations=destinations[i+1:],
-    #         mode="driving",
-    #         departure_time=datetime.now()
-    #     ), method), **cleaned}
-    # return cleaned
-    return {(5, 6): 28239, (4, 5): 23439, (4, 6): 11999, (3, 4): 8829, (3, 5): 30419, (3, 6): 11621, (2, 3): 8954, (2, 4): 9995, (2, 5): 23856, (2, 6): 18027, (1, 2): 25484, (1, 3): 19531, (1, 4): 22214, (1, 5): 36336, (1, 6): 10945, (0, 1): 38721, (0, 2): 37277, (0, 3): 31868, (0, 4): 34003, (0, 5): 52511, (0, 6): 34029}
+    gmaps = gm.Client("AIzaSyBwMwayIZrYwfwotUim0QOvKVu4YZPEnw8")
+    cleaned = {}
+    for i, d in enumerate(destinations[:-1]):
+        cleaned = {**clean(i, gmaps.distance_matrix(
+            origins=[d],
+            destinations=destinations[i+1:],
+            mode="driving",
+            departure_time=datetime.now()
+        ), method), **cleaned}
+    return cleaned
+    # return {(5, 6): 28239, (4, 5): 23439, (4, 6): 11999, (3, 4): 8829, (3, 5): 30419, (3, 6): 11621, (2, 3): 8954, (2, 4): 9995, (2, 5): 23856, (2, 6): 18027, (1, 2): 25484, (1, 3): 19531, (1, 4): 22214, (1, 5): 36336, (1, 6): 10945, (0, 1): 38721, (0, 2): 37277, (0, 3): 31868, (0, 4): 34003, (0, 5): 52511, (0, 6): 34029}
 
 
 
