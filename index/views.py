@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
 from . import client_helper as ch
-from genetic_algorithm import GA
+from . import genetic_algorithm as ga_lib
 
 
 def index(request):
@@ -29,7 +29,7 @@ def process(request):
             print("> " + s)
         print("\nOrder by: {}".format(method))
 
-        ga = GA(mapping, 150, 20, 0.2, destinations)
+        ga = ga_lib.GA(mapping, 150, 20, 0.2, destinations)
         sequence, historyDistance, bestChromosome, firstChromosome = ga.run()
 
         ch.show_report(historyDistance, bestChromosome, firstChromosome, destinations, method)
