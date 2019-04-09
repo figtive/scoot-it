@@ -5,7 +5,7 @@ from django.http import JsonResponse, HttpResponseBadRequest
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
-import client_helper as ch
+from . import client_helper as ch
 from genetic_algorithm import GA
 
 
