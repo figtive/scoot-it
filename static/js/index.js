@@ -7,7 +7,7 @@ $(document).ready(function () {
             count++;
             console.log(count);
         } else {
-            console.log("Reached Maximum")
+            $('#exampleModal').modal("show")
         }
     });
     $("#removewaypoint").click(function () {

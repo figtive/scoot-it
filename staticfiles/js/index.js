@@ -7,7 +7,7 @@ $(document).ready(function () {
             count++;
             console.log(count);
         } else {
-            console.log("Reached Maximum")
+            $('#exampleModal').modal(show)
         }
     });
     $("#removewaypoint").click(function () {
@@ -21,7 +21,96 @@ function initMap() {
     var directionsDisplay = new google.maps.DirectionsRenderer;
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 15,
-        center: {longitude: -6.21462, latitude: 106.84513}
+        center: {longitude: -6.21462, latitude: 106.84513},
+        styles: [
+            {
+                "featureType": "landscape",
+                "stylers": [
+                    {
+                        "color": "#e1f2ff"
+                    }
+                ]
+            },
+            {
+                "featureType": "poi",
+                "elementType": "geometry.fill",
+                "stylers": [
+                    {
+                        "color": "#b5dfff"
+                    }
+                ]
+            },
+            {
+                "featureType": "poi.business",
+                "stylers": [
+                    {
+                        "visibility": "off"
+                    }
+                ]
+            },
+            {
+                "featureType": "poi.park",
+                "elementType": "geometry.fill",
+                "stylers": [
+                    {
+                        "color": "#adfed7"
+                    }
+                ]
+            },
+            {
+                "featureType": "poi.sports_complex",
+                "elementType": "geometry.fill",
+                "stylers": [
+                    {
+                        "color": "#82f4ca"
+                    }
+                ]
+            },
+            {
+                "featureType": "road",
+                "elementType": "labels.icon",
+                "stylers": [
+                    {
+                        "visibility": "off"
+                    }
+                ]
+            },
+            {
+                "featureType": "road.highway",
+                "elementType": "geometry.fill",
+                "stylers": [
+                    {
+                        "color": "#ffd926"
+                    }
+                ]
+            },
+            {
+                "featureType": "road.highway",
+                "elementType": "geometry.stroke",
+                "stylers": [
+                    {
+                        "color": "#eac100"
+                    }
+                ]
+            },
+            {
+                "featureType": "transit",
+                "stylers": [
+                    {
+                        "visibility": "off"
+                    }
+                ]
+            },
+            {
+                "featureType": "water",
+                "elementType": "geometry.fill",
+                "stylers": [
+                    {
+                        "color": "#739fea"
+                    }
+                ]
+            }
+        ]
     });
 
     var input = document.getElementById('loc-search');
@@ -108,13 +197,13 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
             console.log(result.sequence.city);
             let start = "";
             let points = [];
-            for (let i=0; i<result.sequence.city.length; i++) {
+            for (let i = 0; i < result.sequence.city.length; i++) {
                 if (i === 0) {
                     start = result.sequence.city[i];
                 } else {
                     points.push({
-                      location: result.sequence.city[i],
-                      stopover: true
+                        location: result.sequence.city[i],
+                        stopover: true
                     });
                 }
             }
