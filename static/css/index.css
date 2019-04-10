@@ -1,20 +1,20 @@
 ::-webkit-scrollbar {
-  width: 8px;
+    width: 8px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+    background: #f1f1f1;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888;
+    background: #888;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+    background: #555;
 }
 
 .screen {
@@ -30,6 +30,7 @@
     flex-grow: 1;
     min-height: 0;
 }
+
 #right-panel {
     font-family: 'Roboto', 'sans-serif';
     line-height: 30px;
@@ -62,7 +63,6 @@ html, body {
 #map {
     flex-grow: 3;
 }
-
 
 #directions-panel {
     margin-top: 10px;
@@ -110,24 +110,29 @@ html, body {
     border-color: #0b8457;
     color: #0b8457;
 }
+
 #submit:hover {
     background: #0b8457;
     color: #eac100;
 }
+
 
 @media (max-width: 768px) {
 
     .wrapper {
         flex-direction: column;
     }
+
     #map {
         height: 100vh;
     }
+
     #navbar {
         padding: 8px 8px;
     }
+
     #right-panel {
-    flex: 0 0 40%;
+        flex: 0 0 40%;
     }
 
 }
