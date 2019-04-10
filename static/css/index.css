@@ -34,10 +34,11 @@
     font-family: 'Roboto', 'sans-serif';
     line-height: 30px;
     overflow: auto;
-    flex-grow: 0;
+    flex: 0 0 25%;
     padding: 8px;
-    background: #dee1ec;
-    box-shadow: -8px 0 10px -6px black;
+    background: #b5dfff;
+    z-index: 10;
+    box-shadow: -8px 0 10px -6px rgba(0, 0, 0, 0.65);
 }
 
 #right-panel select, #right-panel input {
@@ -123,7 +124,10 @@ html, body {
         height: 100vh;
     }
     #navbar {
-        padding: 8px 8pxs;
+        padding: 8px 8px;
+    }
+    #right-panel {
+    flex: 0 0 40%;
     }
 
 }
