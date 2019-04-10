@@ -1,9 +1,9 @@
-# Scoot
+# scoot it!
 *a navigation optimizer by Colony Group*
 
 ---
 # Website
-*http://scoot-map.herokuapp.com*
+*http://scoot-it.herokuapp.com*
 
 
 ---
