@@ -194,7 +194,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         dataType: 'json',
         data: JSON.stringify(query),
         success: function (result) {
-            console.log(result.sequence.city);
+            console.log(result);
             let start = "";
             let points = [];
             for (let i = 0; i < result.sequence.city.length; i++) {
