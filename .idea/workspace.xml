@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91ccc03a-9155-4b33-b2b3-61d0bb26d32c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/templates/index/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scoot/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/scoot/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/index.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -88,6 +90,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/index/index.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -96,15 +99,12 @@
               <folding>
                 <element signature="n#style#0;n#img#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
+=======
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/index.js">
+        <entry file="file://$PROJECT_DIR$/templates/index/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="53">
-              <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+            <state relative-caret-position="1066">
+              <caret line="41" column="72" selection-start-line="41" selection-start-column="72" selection-end-line="41" selection-end-column="72" />
             </state>
           </provider>
         </entry>
@@ -112,8 +112,43 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/css/index.css">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="936">
+              <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
+>>>>>>> cd21f9bc3147302bdf5614b2683f55395e9eab50
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/js/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="53">
+              <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+=======
+            <state relative-caret-position="128">
+              <caret line="47" column="39" selection-start-line="47" selection-start-column="39" selection-end-line="47" selection-end-column="39" />
+              <folding>
+                <element signature="e#310#319#0" expanded="true" />
+              </folding>
+>>>>>>> cd21f9bc3147302bdf5614b2683f55395e9eab50
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/css/index.css">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="228">
               <caret line="114" column="23" selection-start-line="114" selection-start-column="16" selection-end-line="114" selection-end-column="23" />
+=======
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/js/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="115">
+              <caret line="196" column="30" selection-start-line="196" selection-start-column="30" selection-end-line="196" selection-end-column="30" />
+>>>>>>> cd21f9bc3147302bdf5614b2683f55395e9eab50
             </state>
           </provider>
         </entry>
@@ -159,10 +194,18 @@
         <option value="$PROJECT_DIR$/index/views.py" />
         <option value="$PROJECT_DIR$/templates/index/_footer.html" />
         <option value="$PROJECT_DIR$/templates/_footer.html" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/scoot/settings.py" />
         <option value="$PROJECT_DIR$/static/js/index.js" />
         <option value="$PROJECT_DIR$/static/css/index.css" />
         <option value="$PROJECT_DIR$/templates/index/index.html" />
+=======
+        <option value="$PROJECT_DIR$/staticfiles/css/index.css" />
+        <option value="$PROJECT_DIR$/templates/index/index.html" />
+        <option value="$PROJECT_DIR$/static/css/index.css" />
+        <option value="$PROJECT_DIR$/scoot/settings.py" />
+        <option value="$PROJECT_DIR$/static/js/index.js" />
+>>>>>>> cd21f9bc3147302bdf5614b2683f55395e9eab50
       </list>
     </option>
   </component>
@@ -200,6 +243,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+<<<<<<< HEAD
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -239,6 +283,9 @@
           <select />
         </subPane>
       </pane>
+=======
+      <pane id="ProjectPane" />
+>>>>>>> cd21f9bc3147302bdf5614b2683f55395e9eab50
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -401,6 +448,7 @@
       <updated>1552450893557</updated>
       <workItem from="1554724902797" duration="6957000" />
       <workItem from="1554777980585" duration="10508000" />
+      <workItem from="1554863910064" duration="131000" />
     </task>
     <task id="LOCAL-00001" summary="updated to use sequence mapping">
       <created>1554725621239</created>
@@ -479,16 +527,28 @@
       <option name="project" value="LOCAL" />
       <updated>1554867088878</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="improved styling">
+      <created>1554857503073</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1554857503073</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="17465000" />
+=======
+    <option name="totallyTimeSpent" value="25186000" />
+>>>>>>> cd21f9bc3147302bdf5614b2683f55395e9eab50
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="0" />
     <editor active="true" />
     <layout>
+<<<<<<< HEAD
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28755364" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -516,6 +576,9 @@
     </layout>
     <layout-to-restore>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28755364" />
+=======
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27647534" />
+>>>>>>> cd21f9bc3147302bdf5614b2683f55395e9eab50
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -538,7 +601,7 @@
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="right" x="0" y="0" width="270" height="528" id="Documentation" order="5" side_tool="true" weight="0.32904148" />
       <window_info anchor="right" id="Python Console" order="6" weight="0.3807599" />
-    </layout-to-restore>
+    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -555,8 +618,14 @@
     <MESSAGE value="integrated into django rest api" />
     <MESSAGE value="fixed import" />
     <MESSAGE value="integrated API to frontend map" />
+<<<<<<< HEAD
     <MESSAGE value="Add pop up limit message" />
     <option name="LAST_COMMIT_MESSAGE" value="Add pop up limit message" />
+=======
+    <MESSAGE value="fixed styling" />
+    <MESSAGE value="improved styling" />
+    <option name="LAST_COMMIT_MESSAGE" value="improved styling" />
+>>>>>>> cd21f9bc3147302bdf5614b2683f55395e9eab50
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/scoot$main_google.coverage" NAME="main-google Coverage Results" MODIFIED="1554725301709" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/alg-base" />
@@ -720,27 +789,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/css/index.css">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="228">
           <caret line="114" column="23" selection-start-line="114" selection-start-column="16" selection-end-line="114" selection-end-column="23" />
+=======
+        <state relative-caret-position="1066">
+          <caret line="41" column="72" selection-start-line="41" selection-start-column="72" selection-end-line="41" selection-end-column="72" />
+>>>>>>> cd21f9bc3147302bdf5614b2683f55395e9eab50
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/index.js">
+    <entry file="file://$PROJECT_DIR$/static/css/index.css">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="53">
           <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+=======
+        <state relative-caret-position="936">
+          <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
+>>>>>>> cd21f9bc3147302bdf5614b2683f55395e9eab50
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/index/index.html">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="206">
           <caret line="32" column="64" lean-forward="true" selection-start-line="32" selection-start-column="64" selection-end-line="32" selection-end-column="64" />
+=======
+        <state relative-caret-position="128">
+          <caret line="47" column="39" selection-start-line="47" selection-start-column="39" selection-end-line="47" selection-end-column="39" />
+>>>>>>> cd21f9bc3147302bdf5614b2683f55395e9eab50
           <folding>
             <element signature="n#style#0;n#img#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/static/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="196" column="30" selection-start-line="196" selection-start-column="30" selection-end-line="196" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> cd21f9bc3147302bdf5614b2683f55395e9eab50
   </component>
 </project>
