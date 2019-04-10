@@ -34,11 +34,16 @@
     font-family: 'Roboto', 'sans-serif';
     line-height: 30px;
     overflow: auto;
-    flex: 0 0 25%;
+    flex: 0 0 30%;
     padding: 8px;
     background: #b5dfff;
     z-index: 10;
     box-shadow: -8px 0 10px -6px rgba(0, 0, 0, 0.65);
+}
+
+.material-icons {
+    /*margin-right: 5px;*/
+    vertical-align: text-top;
 }
 
 #right-panel select, #right-panel input {
@@ -47,10 +52,6 @@
 
 #right-panel select {
     width: 100%;
-}
-
-#right-panel i {
-    font-size: 12px;
 }
 
 html, body {
@@ -94,6 +95,17 @@ html, body {
     display: block;
 }
 
+h5 {
+    font-family: 'Varela Round', sans-serif;
+    font-weight: 600;
+}
+
+.logo {
+    vertical-align: top;
+    font-size: 30px;
+    margin-right: 6px;
+}
+
 #method-choice {
     width: 100%;
 }
@@ -109,6 +121,7 @@ html, body {
     line-height: 1.5;
     border-color: #0b8457;
     color: #0b8457;
+    margin-top: 12px;
 }
 #submit:hover {
     background: #0b8457;

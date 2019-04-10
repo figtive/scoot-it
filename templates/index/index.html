@@ -16,6 +16,8 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <script src="{% static 'js/index.js' %}"></script>
@@ -27,8 +29,8 @@
 
     <nav class="navbar" id="navbar">
         <a class="navbar-brand" href="#">
-            <img src="{% static 'image/logo.png' %}" width="30" height="30" class="d-inline-block" alt="">
-            scoot
+<!--            <img src="{% static 'image/logo.png' %}" width="30" height="30" class="d-inline-block" alt="">-->
+            <i class="material-icons logo">directions_car</i>scoot
         </a>
     </nav>
 
@@ -38,14 +40,19 @@
 
         <div id="right-panel">
             <div id="container">
-                <span class="parameter-label">Waypoints</span>
-                <input type="text" id="loc-search" class="form-control" placeholder="Where to go...">
-                <button id="addwaypoint">+</button>
-                <button id="removewaypoint">-</button>
+                <span class="parameter-label"><h5><i class="material-icons">edit_location</i>Waypoints</h5></span>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="loc-search" placeholder="Where to go..."
+                           aria-label="Recipient's username with two button addons" aria-describedby="button-addon4">
+                    <div class="input-group-append" id="button-addon4">
+                        <button class="btn btn-outline-secondary" type="button" id="addwaypoint"><i class="material-icons">add</i></button>
+                        <button class="btn btn-outline-secondary" type="button" id="removewaypoint"><i class="material-icons">remove</i></button>
+                    </div>
+                </div>
                 <ul id="waypoint-list">
                 </ul>
             </div>
-            <span class="parameter-label">Method</span>
+            <span class="parameter-label"><h5><i class="material-icons">call_split</i>Method</h5></span>
             <div class="btn-group btn-group-toggle" id="method-choice" data-toggle="buttons">
                 <label class="btn btn-secondary active">
                     <input type="radio" name="options" id="option1" autocomplete="off" value="distance">Distance
@@ -54,8 +61,9 @@
                     <input type="radio" name="options" id="option2" autocomplete="off" value="duration">Time
                 </label>
             </div>
-            <br> <br>
-            <button type="submit" id="submit" class="btn btn-outline-secondary btn-lg btn-block">scoot it!</button>
+            <button type="submit" id="submit" class="btn btn-outline-secondary btn-lg btn-block"><i
+                    class="material-icons">directions_run</i>scoot it!
+            </button>
             <div id="directions-panel"></div>
         </div>
     </div>
