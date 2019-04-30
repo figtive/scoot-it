@@ -1,13 +1,20 @@
 stages:
+  - test
   - deploy
 
-Deployment:
-  image: ruby:2.4
-  stage: deploy
-  before_script:
+build:
+  image: python:3.6
+  stage: test
+  script:
     - pip install -r requirements.txt
     - python manage.py makemigrations
     - python manage.py migrate
+
+
+deploy:
+  image: ruby:2.4
+  stage: deploy
+  before_script:
     - gem install dpl
   script:
     - dpl --provider=heroku --app=$HEROKU_APPNAME --api-key=$HEROKU_APIKEY
