@@ -5,6 +5,9 @@ Deployment:
   image: ruby:2.4
   stage: deploy
   before_script:
+    - pip install -r requirements.txt
+    - python manage.py makemigrations
+    - python manage.py migrate
     - gem install dpl
   script:
     - dpl --provider=heroku --app=$HEROKU_APPNAME --api-key=$HEROKU_APIKEY
