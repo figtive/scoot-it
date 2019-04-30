@@ -1,0 +1,21 @@
+{
+  "short_name": "scoot it!",
+  "name": "scoot it!",
+  "icons": [
+    {
+      "src": "/static/image/logo-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/static/image/logo-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#10316b",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#10316b"
+}

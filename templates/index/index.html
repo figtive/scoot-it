@@ -17,6 +17,13 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <meta name="theme-color" content="#10316b">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="manifest" href="{% static '/manifest.json' %}">
+    <link rel="icon"
+          type="image/png"
+          href="{% static 'image/favicon.png' %}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
@@ -74,9 +81,11 @@
                 </label>
             </div>
             <button type="submit" id="submit" class="btn btn-outline-secondary btn-lg btn-block">
-                <div class="loader"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span></div><div class="button-label">scoot it!</div>
+                <div class="loader"><span class="spinner-border spinner-border-sm" role="status"
+                                          aria-hidden="true"></span></div>
+                <div class="button-label">scoot it!</div>
             </button>
-<!--            <div id="directions-panel"></div>-->
+            <!--            <div id="directions-panel"></div>-->
         </div>
     </div>
 </div>
