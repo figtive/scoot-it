@@ -7,7 +7,9 @@ from django.views.decorators.csrf import csrf_exempt
 
 from . import client_helper as ch
 from . import genetic_algorithm as ga_lib
-from .models import GAConfig
+
+
+# from .models import GAConfig
 
 
 def index(request):
@@ -39,9 +41,8 @@ def process(request):
             print("> " + s)
         print("\nOrder by: {}".format(method))
 
-        config = GAConfig.objects.first()
-        ga = ga_lib.GA(mapping, getattr(config, "generationEnd"), getattr(config, "populationSize"),
-                       getattr(config, "mutationRate"), destinations)
+        # config = GAConfig.objects.first()
+        ga = ga_lib.GA(mapping, getattr(150, 20, 0.2, destinations))
         sequence, historyDistance, bestChromosome, firstChromosome = ga.run()
 
         # ch.show_report(historyDistance, bestChromosome, firstChromosome, destinations, method)
