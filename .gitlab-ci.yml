@@ -2,16 +2,23 @@ stages:
   - test
   - deploy
 
-build:
+Coverage:
   image: python:3.6
   stage: test
-  script:
+  before_script:
     - pip install -r requirements.txt
     - python manage.py makemigrations
     - python manage.py migrate
 
+  when: on_success
+  script:
+    - echo
+  artifacts:
+    paths:
+      - build
+    expire_in: 1 day
 
-deploy:
+Deployment:
   image: ruby:2.4
   stage: deploy
   before_script:
