@@ -37,7 +37,7 @@
     overflow: auto;
     flex: 0 0 30%;
     padding: 8px;
-    background: #b5dfff;
+    background: #fefefe;
     z-index: 10;
     box-shadow: -8px 0 10px -6px rgba(0, 0, 0, 0.65);
 }
@@ -98,12 +98,46 @@ html, body {
 h5 {
     font-family: 'Varela Round', sans-serif;
     font-weight: 600;
+    font-size: 1.5em;
+}
+
+h5.material-icons {
+    margin-right: 5px;
 }
 
 .logo {
     vertical-align: top;
     font-size: 30px;
     margin-right: 6px;
+}
+
+.waypoint-entry {
+    padding: 8px;
+    margin: 4px;
+    font-size: 1.2em;
+    display: flex;
+}
+
+.waypoint-code {
+    vertical-align: middle;
+    margin-right: 12px;
+    font-size: 1.1em;
+    font-weight: 700;
+    font-family: "Varela Round", Roboto, sans-serif;
+    min-width: 1.2em;
+    display: inline-block;
+    text-align: end;
+}
+
+.waypoint-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-grow: 1;
+}
+
+.remove {
+    margin-left: 12px;
 }
 
 #method-choice {
@@ -115,10 +149,6 @@ h5 {
 }
 
 #submit {
-    font-weight: 800;
-    font-family: 'Varela Round', sans-serif;
-    font-size: 1.2em;
-    line-height: 1.5;
     border-color: #0b8457;
     color: #0b8457;
     margin-top: 12px;
@@ -127,6 +157,21 @@ h5 {
 #submit:hover {
     background: #0b8457;
     color: #eac100;
+}
+
+
+.loader {
+    margin-right: 5px;
+    display: inline-block;
+    vertical-align: inherit;
+}
+
+.button-label {
+    font-weight: 800;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.2em;
+    line-height: 1.5;
+    display: inline;
 }
 
 

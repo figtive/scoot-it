@@ -9,11 +9,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
             integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
     </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-    </script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -28,23 +28,21 @@
 <div class="screen">
     <nav class="navbar" id="navbar">
         <a class="navbar-brand" href="#">
-<!--            <img src="{% static 'image/logo.png' %}" width="30" height="30" class="d-inline-block" alt="">-->
-            <i class="material-icons logo">directions_car</i>scoot it!s
+            <i class="material-icons logo">directions_car</i>scoot it!
         </a>
     </nav>
-    <img src="path\to\loading\gif" id="img" style="display:none" >
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="exampleModalLabel">Attention !</h4>
+                    <h4 class="modal-title" id="exampleModalLabel">Sorry!</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <h6>Sorry, only 10 waypoints can be added<h6>
+                    <h6>Only a maximum of 10 waypoints can be added</h6>
                 </div>
             </div>
         </div>
@@ -58,13 +56,13 @@
                     <input type="text" class="form-control" id="loc-search" placeholder="Where to go..."
                            aria-label="Recipient's username with two button addons" aria-describedby="button-addon4">
                     <div class="input-group-append" id="button-addon4">
-                        <button class="btn btn-outline-secondary" type="button" id="addwaypoint"><i class="material-icons">add</i></button>
-                        <button class="btn btn-outline-secondary" type="button" id="removewaypoint"><i class="material-icons">remove</i></button>
+                        <button class="btn btn-outline-secondary" type="button" id="addwaypoint">Add</button>
                     </div>
                 </div>
-                <ul id="waypoint-list">
-                </ul>
+                <div id="waypoint-list">
+                </div>
             </div>
+            <br>
             <span class="parameter-label"><h5><i class="material-icons">call_split</i>Method</h5></span>
             <div class="btn-group btn-group-toggle" id="method-choice" data-toggle="buttons">
                 <label class="btn btn-secondary active">
@@ -74,10 +72,10 @@
                     <input type="radio" name="options" id="option2" autocomplete="off" value="duration">Time
                 </label>
             </div>
-            <button type="submit" id="submit" class="btn btn-outline-secondary btn-lg btn-block"><i
-                    class="material-icons">directions_run</i>scoot it!
+            <button type="submit" id="submit" class="btn btn-outline-secondary btn-lg btn-block">
+                <div class="loader"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span></div><div class="button-label">scoot it!</div>
             </button>
-            <div id="directions-panel"></div>
+<!--            <div id="directions-panel"></div>-->
         </div>
     </div>
 </div>
