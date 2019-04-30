@@ -42,7 +42,7 @@ def process(request):
         print("\nOrder by: {}".format(method))
 
         # config = GAConfig.objects.first()
-        ga = ga_lib.GA(mapping, getattr(150, 20, 0.2, destinations))
+        ga = ga_lib.GA(mapping, 150, 20, 0.2, destinations)
         sequence, historyDistance, bestChromosome, firstChromosome = ga.run()
 
         # ch.show_report(historyDistance, bestChromosome, firstChromosome, destinations, method)
