@@ -47,10 +47,6 @@
     vertical-align: text-top;
 }
 
-#right-panel select, #right-panel input {
-    font-size: 15px;
-}
-
 #right-panel select {
     width: 100%;
 }

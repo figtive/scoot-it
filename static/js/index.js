@@ -1,6 +1,7 @@
+let count = 0;
 $(document).ready(function () {
     $(".loader").hide();
-    let count = 0;
+    count = 0;
     $("#addwaypoint").on("click", () => {
         insertWaypoint();
         updateLabels();
@@ -207,7 +208,18 @@ function initMap() {
     }
 }
 
+let markers = [];
+
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+    $("#alert-board").empty();
+    if (count <= 1) {
+        $("#alert-board").prepend(`
+            <div class="alert alert-danger report" role="alert">
+                You should have at least 2 waypoints!
+            </div>`);
+        $(".report")[0].scrollIntoView({behavior: "smooth", block: "end"});
+        return;
+    }
     let waypts = [];
     let checkboxArray = document.getElementsByClassName("waypoint-name");
     for (let i = 0; i < checkboxArray.length; i++) {
@@ -229,9 +241,35 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
             $(".loader").hide();
             $("#submit").attr("disabled", false);
             console.log(result);
+            let message;
+            if (result.method === "distance") {
+                let dist = result.cost / 1000;
+                message = `<b>${dist.toFixed(1)} km</b> far`;
+            } else {
+                let hour = Math.floor(result.cost / 3600);
+                let mins = Math.floor((result.cost - (hour * 3600)) / 60);
+                if (hour.toFixed(0) !== "0") {
+                    hour = `${hour.toFixed(0)} hr `;
+                } else hour = "";
+                if (mins.toFixed(0) !== "0") {
+                    mins = `${mins.toFixed(0)} min `;
+                } else mins = "";
+                message = `<b>${hour}${mins}</b>long`;
+            }
+            $("#alert-board").prepend(`
+                <div class="alert alert-success report" role="alert">
+                    <h4 class="alert-heading">scooted!</h4>
+                    <p>Your order of waypoints have been optimized based on trip <b>${result.method}</b>. The trip will be ${message}.</p>
+                    <hr>
+                    <p class="mb-0">Have a safe journey!</p>
+                </div>`);
+        $(".report")[0].scrollIntoView({behavior: "smooth", block: "start"});
+
             let start = "";
             let points = [];
+            let sequence = [];
             for (let i = 0; i < result.sequence.city.length; i++) {
+                sequence.push(result.sequence.index[i]);
                 if (i === 0) {
                     start = result.sequence.city[i];
                 } else {
@@ -241,6 +279,13 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
                     });
                 }
             }
+            document.querySelectorAll('.waypoint-code').forEach((element, index) => {
+                element.innerHTML = (sequence[index] + 1).toString(10);
+            });
+            markers.forEach(marker => {
+                marker.setMap(null);
+            });
+            markers = [];
             directionsService.route({
                 origin: start,
                 destination: start,
@@ -257,16 +302,25 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
                             label: "" + (i + 1),
                             map: map
                         });
+                        markers.push(marker);
                     }
-                } else {
-
                 }
             });
         },
         error: (error) => {
             $("#submit").attr("disabled", false);
             $(".loader").hide();
-            console.log("yo it broke")
+            let message;
+            try {
+                message = error.responseJSON.error;
+            } catch (e) {
+                message = "An error has occurred!";
+            }
+            $("#alert-board").prepend(`
+                <div class="alert alert-danger report" role="alert">
+                    ${message}
+                </div>`);
+        $(".report")[0].scrollIntoView({behavior: "smooth", block: "end"});
         }
     })
 }

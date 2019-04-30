@@ -15,7 +15,6 @@ def get_matrix(destinations, method='distance'):
             departure_time=datetime.now()
         ), method), **cleaned}
     return cleaned
-    # return {(5, 6): 28239, (4, 5): 23439, (4, 6): 11999, (3, 4): 8829, (3, 5): 30419, (3, 6): 11621, (2, 3): 8954, (2, 4): 9995, (2, 5): 23856, (2, 6): 18027, (1, 2): 25484, (1, 3): 19531, (1, 4): 22214, (1, 5): 36336, (1, 6): 10945, (0, 1): 38721, (0, 2): 37277, (0, 3): 31868, (0, 4): 34003, (0, 5): 52511, (0, 6): 34029}
 
 
 
@@ -88,11 +87,7 @@ def show_report(historyDistance, bestChromosome, firstChromosome, destinations, 
     plt.show()
 
 
-def geodetic_to_geocentric(lat, lon):
-    """
-    Compute the Geocentric (Cartesian) Coordinates X, Y, Z
-    given the Geodetic Coordinates lat, lon + Ellipsoid Height h
-    """
+def geodetic_to_geocentric(lat, lon):   
     a, rf = (6378137, 298.257223563)
     lat_rad = math.radians(lat)
     lon_rad = math.radians(lon)

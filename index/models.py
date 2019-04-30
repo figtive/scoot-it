@@ -1,3 +1,7 @@
 from django.db import models
 
-# Create your models here.
+
+class GAConfig(models.Model):
+    generationEnd = models.IntegerField(default=150)
+    populationSize = models.IntegerField(default=20)
+    mutationRate = models.FloatField(default=0.2)

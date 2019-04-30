@@ -7,6 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from . import client_helper as ch
 from . import genetic_algorithm as ga_lib
+from .models import GAConfig
 
 
 def index(request):
@@ -16,22 +17,31 @@ def index(request):
 @csrf_exempt
 def process(request):
     if request.method == 'POST':
+        # try:
         print(request.body.decode('utf-8'))
         body = json.loads(request.body.decode('utf-8'))
         print(body)
         destinations = body['destinations']
-        method = body['method']     # ['distance', 'duration', 'duration_in_traffic']
-        radius = 50
-
-        mapping = ch.get_matrix(destinations, method)
-        print("Within {}km radius? {}".format(radius, ch.check_range(mapping, radius)))
+        try:
+            method = body['method']  # ['distance', 'duration', 'duration_in_traffic']
+        except KeyError:
+            method = "distance"
+        try:
+            mapping = ch.get_matrix(destinations, method)
+        except Exception:
+            return JsonResponse({
+                'error': 'Invalid waypoints!',
+            }, status=409)
+        print("Within {}km radius? {}".format(50, ch.check_range(mapping, 50)))
 
         print("\nDestinations:")
         for s in destinations:
             print("> " + s)
         print("\nOrder by: {}".format(method))
 
-        ga = ga_lib.GA(mapping, 150, 20, 0.2, destinations)
+        config = GAConfig.objects.first()
+        ga = ga_lib.GA(mapping, getattr(config, "generationEnd"), getattr(config, "populationSize"),
+                       getattr(config, "mutationRate"), destinations)
         sequence, historyDistance, bestChromosome, firstChromosome = ga.run()
 
         # ch.show_report(historyDistance, bestChromosome, firstChromosome, destinations, method)
@@ -47,5 +57,7 @@ def process(request):
             'method': method,
             'cost': bestChromosome.distance()
         })
+    # except Exception:
+    #     return HttpResponseBadRequest()
     else:
         return HttpResponseBadRequest()

@@ -85,13 +85,30 @@
                                           aria-hidden="true"></span></div>
                 <div class="button-label">scoot it!</div>
             </button>
-            <!--            <div id="directions-panel"></div>-->
+            <br>
+            <div id="alert-board">
+            </div>
+            <div class="alert alert-info" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="alert-heading">Welcome!</h4>
+                <p><b>scoot it!</b> is a trip optimizer tool. We help to optimize the places you want to visit by
+                    reordering them based on the best distance or time - you decide! Keep in mind that we calculate a round trip through all the waypoints. We use Genetic Algorithm to
+                    calculate a better sequence of your journey.
+                </p>
+                <hr>
+                <p>Start by entering some waypoints, at least 2. Then choose a method to calculate your
+                    journey. Simply press <b>scoot it!</b> once you're done, wait for a few seconds, and... Ta-da!
+                    Enjoy a better trip!</p>
+                <hr>
+                <p class="mb-0">View the sources at <a href="https://gitlab.com/colony-group/scoot" target="_blank">https://gitlab.com/colony-group/scoot</a>
+                </p>
+            </div>
         </div>
     </div>
 </div>
 
-<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}&callback=initMap">-->
-<!--    </script>-->
 <script src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}&libraries=places&callback=initMap"
         async defer></script>
 </body>
