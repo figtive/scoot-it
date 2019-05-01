@@ -44,13 +44,20 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="exampleModalLabel">Sorry!</h4>
+                    <h4 class="modal-title" id="exampleModalLabel">Open in Google Maps</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <h6>Only a maximum of 10 waypoints can be added</h6>
+                    <p>You can open the trip data in Google Maps. Results may slightly differ due to routing algorithms.<br>Directions
+                        show in Google Maps will be a one-way-trip from the starting point.</p>
+                    <form id="ask-start">
+                        <label for="start-select">Choose where to start from:</label>
+                        <select class="custom-select mb-3" id="start-select" required>
+                        </select>
+                        <button type="submit" class="btn btn-success btn-lg btn-block export-show">Open</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -64,23 +71,24 @@
                     <input type="text" class="form-control" id="loc-search" placeholder="Where to go..."
                            aria-label="Recipient's username with two button addons" aria-describedby="button-addon4">
                     <div class="input-group-append" id="button-addon4">
-                        <button class="btn btn-outline-secondary" type="button" id="addwaypoint">Add</button>
+                        <button class="btn btn-outline-primary" type="button" id="addwaypoint">Add</button>
                     </div>
                 </div>
                 <div id="waypoint-list">
                 </div>
             </div>
-            <br>
+            <hr>
             <span class="parameter-label"><h5><i class="material-icons">call_split</i>Method</h5></span>
             <div class="btn-group btn-group-toggle" id="method-choice" data-toggle="buttons">
-                <label class="btn btn-secondary active">
+                <label class="btn btn-outline-primary active">
                     <input type="radio" name="options" id="option1" autocomplete="off" value="distance">Distance
                 </label>
-                <label class="btn btn-secondary">
+                <label class="btn btn-outline-primary">
                     <input type="radio" name="options" id="option2" autocomplete="off" value="duration">Time
                 </label>
             </div>
-            <button type="submit" id="submit" class="btn btn-outline-secondary btn-lg btn-block">
+            <hr>
+            <button type="submit" id="submit" class="btn btn-outline-success btn-lg btn-block">
                 <div class="loader"><span class="spinner-border spinner-border-sm" role="status"
                                           aria-hidden="true"></span></div>
                 <div class="button-label">scoot it!</div>
@@ -93,8 +101,9 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <h4 class="alert-heading">Welcome!</h4>
-                <p><b>scoot it!</b> is a trip optimizer tool. We help to optimize the places you want to visit by
-                    reordering them based on the best distance or time - you decide! Keep in mind that we calculate a round trip through all the waypoints. We use Genetic Algorithm to
+                <p><b>scoot it!</b> is a trip optimizer app. We help to optimize the places you want to visit by
+                    reordering them based on the best distance or time - you decide! Keep in mind that we calculate a
+                    round-trip through all the waypoints. We use Genetic Algorithm to
                     calculate a better sequence of your journey.
                 </p>
                 <hr>
@@ -102,7 +111,7 @@
                     journey. Once you're done, simply press <b>scoot it!</b>, wait for a few seconds, and... Ta-da!
                     Enjoy a better trip!</p>
                 <hr>
-                <p class="mb-0">View the sources at <a href="https://gitlab.com/colony-group/scoot" target="_blank">https://gitlab.com/colony-group/scoot</a>
+                <p class="mb-0">View the sources at <a href="https://gitlab.com/colony-group/scoot" class="badge-pill badge-info" target="_blank">GitLab</a>
                 </p>
             </div>
         </div>

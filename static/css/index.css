@@ -1,5 +1,5 @@
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 4px;
 }
 
 /* Track */
@@ -97,6 +97,11 @@ h5 {
     font-size: 1.5em;
 }
 
+h4 {
+    font-family: 'Varela Round', Roboto, sans-serif;
+    font-weight: 600;
+}
+
 h5.material-icons {
     margin-right: 5px;
 }
@@ -136,6 +141,10 @@ h5.material-icons {
     margin-left: 12px;
 }
 
+#export, .export-show{
+    font-family: "Varela Round", Roboto, sans-serif;
+}
+
 #method-choice {
     width: 100%;
 }
@@ -145,14 +154,14 @@ h5.material-icons {
 }
 
 #submit {
-    border-color: #0b8457;
-    color: #0b8457;
+    border-color: #159736;
+    color: #159736;
     margin-top: 12px;
 }
 
 #submit:hover {
-    background: #0b8457;
-    color: #eac100;
+    background: #159736;
+    color: #eacf00;
 }
 
 
@@ -170,6 +179,15 @@ h5.material-icons {
     display: inline;
 }
 
+#alert-board {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-top: -8px;
+}
+
+.alert {
+    margin-bottom: 0;
+}
 
 @media (max-width: 768px) {
 

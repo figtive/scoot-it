@@ -1,4 +1,9 @@
 let count = 0;
+let notified = false;
+let processed = false;
+let map;
+let waypoints = [];
+
 $(document).ready(function () {
     $(".loader").hide();
     count = 0;
@@ -11,6 +16,21 @@ $(document).ready(function () {
         updateLabels();
         count--;
     });
+    $(document).on("click", "#export", function () {
+        $("#start-select").empty().append(`<option value="" disabled selected>Choose...</option>`);
+        console.log(waypoints);
+        waypoints.forEach((waypoint) => {
+            $("#start-select").append(`<option value="${waypoint}">${waypoint}</option>`)
+        });
+        $('#exampleModal').modal("show");
+
+    });
+    $(document).on("submit", "#ask-start", function (e) {
+        e.preventDefault();
+        let url = buildUrl();
+        window.open(url, '_blank');
+        $('#exampleModal').modal("hide");
+    });
     $("#loc-search").on('keypress', (e) => {
         var code = e.keyCode || e.which;
         if (code === 13) {
@@ -18,6 +38,27 @@ $(document).ready(function () {
             updateLabels();
         }
     });
+
+    function buildUrl() {
+        let start = $('#start-select').find(":selected").text();
+        let ordered = waypoints;
+        let beginIdx;
+        let url = "https://www.google.com/maps/dir/?api=1&travelmode=driving&";
+        for (let i = 0; i < waypoints.length; i++) {
+            if (waypoints[i] === start) {
+                beginIdx = i;
+                break;
+            }
+        }
+        ordered.push.apply(ordered, ordered.splice(0, beginIdx));
+        url = url + $.param({
+            origin: ordered[0],
+            destination: ordered[ordered.length - 1],
+            waypoints: ordered.splice(1, ordered.length - 2).join("|"),
+        });
+        console.log(url);
+        return url;
+    }
 
     function insertWaypoint() {
         let selectedVal = $('#loc-search').val();
@@ -34,7 +75,10 @@ $(document).ready(function () {
                     </div>`);
             count++;
         } else {
-            $('#exampleModal').modal("show");
+            $("#alert-board").empty().prepend(`
+            <div class="alert alert-warning report" role="alert">
+                Sorry! Only a maximum of 10 waypoints can be added.
+            </div>`);
         }
     }
 
@@ -42,10 +86,15 @@ $(document).ready(function () {
         document.querySelectorAll('.waypoint-code').forEach((element, index) => {
             element.innerHTML = (index + 1).toString(10);
         });
+        if (processed && !notified) {
+            notified = true;
+            $("#alert-board").empty().prepend(`
+            <div class="alert alert-warning report" role="alert">
+                Waypoints have been changed!. Press <b>scoot it!</b> to reprocess data.
+            </div>`);
+        }
     }
 });
-
-let map;
 
 function initMap() {
     let directionsService = new google.maps.DirectionsService;
@@ -153,7 +202,7 @@ function initMap() {
     // more details for that place.
     searchBox.addListener('places_changed', function () {
         let places = searchBox.getPlaces();
-        if (places.length == 0) {
+        if (places.length === 0) {
             return;
         }
         // Clear out the old markers.
@@ -217,7 +266,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
             <div class="alert alert-danger report" role="alert">
                 You should have at least 2 waypoints!
             </div>`);
-        $(".report")[0].scrollIntoView({behavior: "smooth", block: "end"});
+        $("#alert-board")[0].scrollIntoView({behavior: "smooth", block: "end"});
         return;
     }
     let waypts = [];
@@ -227,10 +276,13 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
     }
     let method = $('#method-choice input:radio:checked').val();
     let query = {"destinations": waypts, "method": method};
+    waypoints = waypts;
     console.log(query);
 
     $(".loader").show();
     $("#submit").attr("disabled", true);
+    processed = false;
+    notified = false;
     $.ajax({
         url: 'process/',
         traditional: true,
@@ -238,6 +290,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         dataType: 'json',
         data: JSON.stringify(query),
         success: (result) => {
+            processed = true;
             $(".loader").hide();
             $("#submit").attr("disabled", false);
             console.log(result);
@@ -259,11 +312,11 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
             $("#alert-board").prepend(`
                 <div class="alert alert-success report" role="alert">
                     <h4 class="alert-heading">scooted!</h4>
-                    <p>Your order of waypoints have been optimized based on trip <b>${result.method}</b>. The trip will be ${message}.</p>
+                    <p>Your order of waypoints have been optimized based on trip <b>${result.method}</b>. The trip will be ${message}. Have a safe journey!</p>
                     <hr>
-                    <p class="mb-0">Have a safe journey!</p>
+                    <button type="button mb-0" class="btn btn-success btn-lg btn-block" id="export">Open in Google Maps</button>
                 </div>`);
-        $(".report")[0].scrollIntoView({behavior: "smooth", block: "start"});
+            $("#alert-board")[0].scrollIntoView({behavior: "smooth", block: "start"});
 
             let start = "";
             let points = [];
@@ -318,9 +371,9 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
             }
             $("#alert-board").prepend(`
                 <div class="alert alert-danger report" role="alert">
-                    ${message}
+                    ${message} Make sure you use the ones suggested.
                 </div>`);
-        $(".report")[0].scrollIntoView({behavior: "smooth", block: "end"});
+            $("#alert-board")[0].scrollIntoView({behavior: "smooth", block: "end"});
         }
     })
 }
