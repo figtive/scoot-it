@@ -61,9 +61,21 @@ $(document).ready(function () {
     }
 
     function insertWaypoint() {
-        let selectedVal = $('#loc-search').val();
+        let selectedVal = $('#loc-search').val().trim();
         if (selectedVal === "") return;
         if (count < 10) {
+            let exists = false;
+            document.querySelectorAll('.waypoint-name').forEach((element, index) => {
+                if (element.innerHTML.toString().trim() === selectedVal) {
+                    $("#alert-board").empty().prepend(`
+                        <div class="alert alert-danger report" role="alert">
+                            That waypoint has already been added!
+                        </div>`);
+                    $("#alert-board")[0].scrollIntoView({behavior: "smooth", block: "end"});
+                    exists = true;
+                }
+            });
+            if (exists) return;
             $("#loc-search").val("");
             $('#waypoint-list').append(
                 `<div class="waypoint-entry">
@@ -79,6 +91,7 @@ $(document).ready(function () {
             <div class="alert alert-warning report" role="alert">
                 Sorry! Only a maximum of 10 waypoints can be added.
             </div>`);
+            $("#alert-board")[0].scrollIntoView({behavior: "smooth", block: "end"});
         }
     }
 
@@ -333,7 +346,14 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
                 }
             }
             document.querySelectorAll('.waypoint-code').forEach((element, index) => {
-                element.innerHTML = (sequence[index] + 1).toString(10);
+                let pos;
+                for (let j = 0; j < sequence.length; j++) {
+                    if (sequence[j] === index) {
+                        pos = j;
+                        break;
+                    }
+                }
+                element.innerHTML = (pos + 1).toString(10);
             });
             markers.forEach(marker => {
                 marker.setMap(null);
