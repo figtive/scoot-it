@@ -88,7 +88,7 @@ $(document).ready(function () {
             count++;
         } else {
             $("#alert-board").empty().prepend(`
-            <div class="alert alert-warning report" role="alert">
+            <div class="alert alert-danger report" role="alert">
                 Sorry! Only a maximum of 10 waypoints can be added.
             </div>`);
             $("#alert-board")[0].scrollIntoView({behavior: "smooth", block: "end"});
