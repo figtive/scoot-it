@@ -15,6 +15,7 @@
   ],
   "start_url": "/?utm_source=launcher",
   "background_color": "#10316b",
+  "orientation": "portrait",
   "display": "standalone",
   "scope": "/",
   "theme_color": "#10316b"
